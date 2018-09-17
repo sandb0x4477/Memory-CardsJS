@@ -1,0 +1,54 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  // height: 100vh;
+  background: #c7fcdd;
+}
+
+.memory-game {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(4, auto);
+  grid-row-gap: 5px;
+  grid-column-gap: 8px;
+  justify-items: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.memory-card {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: "frontAndBack";
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .4s;
+
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+    transition: transform .2s;
+  }
+
+  &.flip {
+    transform: rotateY(180deg);
+  }
+}
+
+.front-face {
+  grid-area: frontAndBack;
+}
+
+.back-face {
+  grid-area: frontAndBack;
+  backface-visibility: hidden;
+}
+
+img {
+  height: 160px;
+}
